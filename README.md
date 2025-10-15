@@ -50,3 +50,25 @@
 - Stage name [ dev ]
 
 - Copy the Invoke URL : https://xxxxxx.execute-api.ap-south-1.amazonaws.com/dev
+
+## Createa ACM certificate
+
+## Access the API Gateway Via Custom Domain
+
+- in the API GATEWAY Select the  [ Custom domain names ]
+- Add domain name
+- api.harishshetty.xyz
+- Attach the ACM certificate
+- Configure API mappings
+
+- API [ lambda ]
+- Stage [ dev ]
+- Path (optional) [ dev ]
+
+## Add it in the Route53
+
+- Creata a Record [ api ]
+- Alias
+- select service
+- select region
+- Select the api url

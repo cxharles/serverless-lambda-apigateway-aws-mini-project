@@ -1,6 +1,6 @@
-# How to Set Up serverless-lambda-apigateway-aws-mini-project
+# The Ultimate AWS Serverless Tutorial: Lambda + API Gateway [Step-by-Step Project]
 
-[Project Page](https://harishnshetty.github.io/projects.html)
+[https://harishnshetty.github.io/projects.html](https://harishnshetty.github.io/projects.html)
 
 [![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/f7b2a2490ad8bae5c0ee6f9056160a6275678341/serverless%20pyhton%20Project.jpg)](https://youtu.be/G6xeBhUgGBo)
 

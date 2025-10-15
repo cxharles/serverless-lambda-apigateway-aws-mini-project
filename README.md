@@ -59,7 +59,7 @@
 
 ---
 
-## 5. Create an ACM Certificate
+<!-- ## 5. Create an ACM Certificate
 
 - Go to **AWS Certificate Manager (ACM)**.
 - Request a public certificate for your custom domain (e.g., `api.harishshetty.xyz`).
@@ -90,6 +90,6 @@
   - **Region:** Select your region
   - **Value:** Select the API Gateway URL
 
----
+--- -->
 
 **Done! Your serverless Lambda API is now accessible via your custom domain.**

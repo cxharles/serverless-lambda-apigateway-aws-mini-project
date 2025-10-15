@@ -1,81 +1,95 @@
-#  How to setup serverless-lambda-apigateway-aws-mini-project
-# 
+# How to Set Up serverless-lambda-apigateway-aws-mini-project
 
-[https://harishnshetty.github.io/projects.html](https://harishnshetty.github.io/projects.html)
+[Project Page](https://harishnshetty.github.io/projects.html)
 
 [![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/f7b2a2490ad8bae5c0ee6f9056160a6275678341/serverless%20pyhton%20Project.jpg)](https://youtu.be/G6xeBhUgGBo)
 
-## Create a Dynamo DB
-
-- create table
 ---
-- Table name : harish
-- Partition key : email
-- [create table]
 
-## Create a IAM Role For lambda
+## 1. Create a DynamoDB Table
 
-- Click on the Roles
-- Create a Role 
-- Aws Service [Select - Lambda ]
-- Select [ AdministratorAccess ]
-- Role name [ Lambda-Role ]
+- Go to DynamoDB in AWS Console.
+- Click **Create table**.
+  - **Table name:** `harish`
+  - **Partition key:** `email`
+- Click **Create table**.
 
-## Create a Lambda
+---
 
-- Createa a function 
-- Function name [ harish ]
-- Runtime [ Python 3.13 ]
-- Use an existing role [ Lambda-Role ]
+## 2. Create an IAM Role for Lambda
 
-- Click on the configuration [ Edit ] 
-- Timeout [ 15 Minutes 0 Sec ]
+- Go to **IAM > Roles**.
+- Click **Create role**.
+  - **Trusted entity type:** AWS Service
+  - **Use case:** Lambda
+- Attach the **AdministratorAccess** policy.
+- **Role name:** `Lambda-Role`
+- Click **Create role**.
 
-- Upload the Contents Via the Code 
+---
 
+## 3. Create a Lambda Function
+
+- Go to **Lambda > Create function**.
+  - **Function name:** `harish`
+  - **Runtime:** Python 3.13
+  - **Permissions:** Use an existing role (`Lambda-Role`)
+- After creation, go to **Configuration > General configuration > Edit**.
+  - **Timeout:** 15 minutes 0 seconds
+- Upload your code in the **Code** section.
 
 [![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/f7b2a2490ad8bae5c0ee6f9056160a6275678341/serverless%20pyhton%20Project1.jpg)](https://youtu.be/G6xeBhUgGBo)
 
+---
 
-## Create a API gateway
+## 4. Create an API Gateway
 
-- Create an API 
-- REST API [ Build ]
-- API name [ Lambda ]
-- Create method 
-- Method type [ GET ]
-- Lambda proxy integration [ Enable ]
-- Lambda function [ Select the lambda Function ]
+- Go to **API Gateway > Create API**.
+  - Choose **REST API** (Build).
+  - **API name:** `Lambda`
+- Create a **GET** method:
+  - **Integration type:** Lambda proxy integration (Enable)
+  - **Lambda function:** Select your Lambda function
+- Create a **POST** method:
+  - **Integration type:** Lambda proxy integration (Enable)
+  - **Lambda function:** Select your Lambda function
+- Deploy the API:
+  - **Stage name:** `dev`
+- Copy the **Invoke URL** (e.g., `https://xxxxxx.execute-api.ap-south-1.amazonaws.com/dev`).
 
-- Create method 
-- Method type [ POST ]
-- Lambda proxy integration [ Enable ]
-- Lambda function [ Select the lambda Function ]
+---
 
-- Deploy API
-- *New Stage*
-- Stage name [ dev ]
+## 5. Create an ACM Certificate
 
-- Copy the Invoke URL : https://xxxxxx.execute-api.ap-south-1.amazonaws.com/dev
+- Go to **AWS Certificate Manager (ACM)**.
+- Request a public certificate for your custom domain (e.g., `api.harishshetty.xyz`).
+- Complete domain validation as instructed.
 
-## Createa ACM certificate
+---
 
-## Access the API Gateway Via Custom Domain
+## 6. Access API Gateway via Custom Domain
 
-- in the API GATEWAY Select the  [ Custom domain names ]
-- Add domain name
-- api.harishshetty.xyz
-- Attach the ACM certificate
-- Configure API mappings
+- In **API Gateway**, go to **Custom domain names**.
+- Click **Create** or **Add domain name**.
+  - **Domain name:** `api.harishshetty.xyz`
+  - Attach the ACM certificate.
+- Configure **API mappings**:
+  - **API:** `Lambda`
+  - **Stage:** `dev`
+  - **Path (optional):** `dev`
 
-- API [ lambda ]
-- Stage [ dev ]
-- Path (optional) [ dev ]
+---
 
-## Add it in the Route53
+## 7. Add a Record in Route 53
 
-- Creata a Record [ api ]
-- Alias
-- select service
-- select region
-- Select the api url
+- Go to **Route 53 > Hosted zones**.
+- Create a new **Record**:
+  - **Record name:** `api`
+  - **Record type:** Alias
+  - **Alias to:** API Gateway domain
+  - **Region:** Select your region
+  - **Value:** Select the API Gateway URL
+
+---
+
+**Done! Your serverless Lambda API is now accessible via your custom domain.**

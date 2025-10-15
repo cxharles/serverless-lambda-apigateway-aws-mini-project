@@ -92,4 +92,17 @@
 
 --- -->
 
+
+
+## Clean-up
+
+- Api Gateway
+- lambada
+- Dynamo DB
+
+## For more projects, check out  
+[https://harishnshetty.github.io/projects.html](https://harishnshetty.github.io/projects.html)
+
+[![Video Tutorial](https://github.com/harishnshetty/image-data-project/blob/ff56aabe1691e6e7afbda675d1eac04970c0a8e8/main.png)](https://www.youtube.com/@devopsHarishNShetty) -->
+
 **Done! Your serverless Lambda API is now accessible via your custom domain.**
